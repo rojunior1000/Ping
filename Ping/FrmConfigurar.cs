@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ping
+namespace MonitoramentoIPs
 {
-    public partial class Form1 : Form
+    public partial class FrmConfigurar : Form
     {
-        public Form1()
+        public FrmConfigurar()
         {
             InitializeComponent();
         }
