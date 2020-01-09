@@ -35,12 +35,12 @@
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTempo = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnConfigurar = new System.Windows.Forms.Button();
             this.btnPausar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnIniciar = new System.Windows.Forms.Button();
+            this.lblproximo = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -84,26 +84,13 @@
             this.panel2.Controls.Add(this.btnFechar);
             this.panel2.Controls.Add(this.btnConfigurar);
             this.panel2.Controls.Add(this.btnPausar);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.lblTempo);
+            this.panel2.Controls.Add(this.btnIniciar);
+            this.panel2.Controls.Add(this.lblproximo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 459);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(923, 65);
             this.panel2.TabIndex = 2;
-            // 
-            // lblTempo
-            // 
-            this.lblTempo.AutoSize = true;
-            this.lblTempo.Location = new System.Drawing.Point(12, 26);
-            this.lblTempo.Name = "lblTempo";
-            this.lblTempo.Size = new System.Drawing.Size(71, 13);
-            this.lblTempo.TabIndex = 0;
-            this.lblTempo.Text = "Proximo Ping:";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
             // 
             // btnFechar
             // 
@@ -116,6 +103,7 @@
             this.btnFechar.Text = "&Fechar";
             this.btnFechar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnConfigurar
             // 
@@ -128,6 +116,7 @@
             this.btnConfigurar.Text = "&Configurar";
             this.btnConfigurar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfigurar.UseVisualStyleBackColor = true;
+            this.btnConfigurar.Click += new System.EventHandler(this.btnConfigurar_Click);
             // 
             // btnPausar
             // 
@@ -140,18 +129,34 @@
             this.btnPausar.Text = "&Pausar";
             this.btnPausar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPausar.UseVisualStyleBackColor = true;
+            this.btnPausar.Click += new System.EventHandler(this.btnPausar_Click);
             // 
-            // button1
+            // btnIniciar
             // 
-            this.button1.Image = global::MonitoramentoIPs.Properties.Resources.Iniciar32;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(593, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 52);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "&Iniciar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnIniciar.Image = global::MonitoramentoIPs.Properties.Resources.Iniciar32;
+            this.btnIniciar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnIniciar.Location = new System.Drawing.Point(593, 6);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(75, 52);
+            this.btnIniciar.TabIndex = 1;
+            this.btnIniciar.Text = "&Iniciar";
+            this.btnIniciar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
+            // lblproximo
+            // 
+            this.lblproximo.AutoSize = true;
+            this.lblproximo.Location = new System.Drawing.Point(12, 26);
+            this.lblproximo.Name = "lblproximo";
+            this.lblproximo.Size = new System.Drawing.Size(71, 13);
+            this.lblproximo.TabIndex = 0;
+            this.lblproximo.Text = "Proximo Ping:";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmPrincipal
             // 
@@ -186,8 +191,8 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnConfigurar;
         private System.Windows.Forms.Button btnPausar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblTempo;
+        private System.Windows.Forms.Button btnIniciar;
+        private System.Windows.Forms.Label lblproximo;
     }
 }
 

@@ -63,6 +63,16 @@ namespace MonitoramentoIPs.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_2_24 {
+            get {
+                object obj = ResourceManager.GetObject("add_2_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Configurar32 {
             get {
                 object obj = ResourceManager.GetObject("Configurar32", resourceCulture);
@@ -93,6 +103,16 @@ namespace MonitoramentoIPs.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minus_24 {
+            get {
+                object obj = ResourceManager.GetObject("minus_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pausar32 {
             get {
                 object obj = ResourceManager.GetObject("Pausar32", resourceCulture);
@@ -106,6 +126,16 @@ namespace MonitoramentoIPs.Properties {
         internal static System.Drawing.Bitmap Sair32 {
             get {
                 object obj = ResourceManager.GetObject("Sair32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Salvar32 {
+            get {
+                object obj = ResourceManager.GetObject("Salvar32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
