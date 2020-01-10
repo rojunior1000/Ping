@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoramentoIPs", "Ping\MonitoramentoIPs.csproj", "{67947225-B984-4B56-9354-85D65DDC4E65}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MonitoramentoIPSetup", "MonitoramentoIPSetup\MonitoramentoIPSetup.vdproj", "{3846A4BA-4397-46CA-957D-42CC0948966C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{67947225-B984-4B56-9354-85D65DDC4E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67947225-B984-4B56-9354-85D65DDC4E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67947225-B984-4B56-9354-85D65DDC4E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3846A4BA-4397-46CA-957D-42CC0948966C}.Debug|Any CPU.ActiveCfg = Debug
+		{3846A4BA-4397-46CA-957D-42CC0948966C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
@@ -15,6 +17,8 @@ namespace MonitoramentoIPs
         Int32 Tempo = 0;
         Int32 Tempo1 = 0;
         string TipoEnvio = string.Empty;
+        bool TelegramEnvio = false;
+        bool EmailEnvio = false;
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
@@ -23,23 +27,28 @@ namespace MonitoramentoIPs
 
         private void CarregaConfig()
         {
+            string strTextoEnvio = string.Empty;
 
-            string strIPs = string.Empty;
+            lblConfiguracaoTexto.Text = "Sem Parametrização";
+
+            if (!File.Exists(clsFunctions.ArquivoConfigXML))
+                return;
+
+            List<string> strIPs = new List<string>();
 
             this.lstvIPs.Items.Clear();
             this.lstvIPs.BeginUpdate();
 
-            for (int i = 1; i <= 999; i++)
+            strIPs = clsFunctions.RecuperaList_Xml("IPs", "ConfigPingIPs");
+            foreach (var item in strIPs)
             {
-                strIPs = clsFunctions.Recupera_Xml("IPs" + i, "ConfigPingIPs");
-                if (!string.IsNullOrEmpty(strIPs))
-                {
-                    ListViewItem lst = this.lstvIPs.Items.Add(strIPs);
-                    lst.SubItems.Add("Verificar");
-                    lst.SubItems.Add(string.Empty);
-                    lst.Tag = strIPs;
-                }
+                ListViewItem lst = this.lstvIPs.Items.Add(item);
+                lst.SubItems.Add("Verificar");
+                lst.SubItems.Add(string.Empty);
+                lst.Tag = item;
             }
+
+            this.lstvIPs.EndUpdate();
 
             Tempo = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("TempoPing", "ConfigPingIPs")) ? 0 : Convert.ToInt32(clsFunctions.Recupera_Xml("TempoPing", "ConfigPingIPs"));
             Tempo1 = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("TempoPing", "ConfigPingIPs")) ? 0 : Convert.ToInt32(clsFunctions.Recupera_Xml("TempoPing", "ConfigPingIPs"));
@@ -47,8 +56,19 @@ namespace MonitoramentoIPs
             if (!string.IsNullOrEmpty(clsFunctions.Recupera_Xml("Enviar1", "ConfigPingIPs")))
                 TipoEnvio = Convert.ToBoolean(clsFunctions.Recupera_Xml("Enviar1", "ConfigPingIPs")) == true ? "1" : "2";
 
-            this.lstvIPs.EndUpdate();
+            TelegramEnvio = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs"));
+            EmailEnvio = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("SMTP", "ConfigPingIPs")) ? false : true;
 
+            lblConfiguracaoTexto.Text = "Nros de IPs para verificar " + strIPs.Count.ToString() + " - Tempo de ciclo de verificação dos IPs " + Tempo.ToString() + " segundos" + Environment.NewLine;
+
+            if (TelegramEnvio && EmailEnvio)
+                strTextoEnvio = "E-mail e Telegram";
+            else if (EmailEnvio)
+                strTextoEnvio = "E-mail";
+            else if (TelegramEnvio)
+                strTextoEnvio = "Telegram";
+
+            lblConfiguracaoTexto.Text += TipoEnvio == "1" ? "Enviar " + strTextoEnvio + " quando houver erro" : "Enviar " + strTextoEnvio + " em cada ciclo de verificação";
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -60,6 +80,7 @@ namespace MonitoramentoIPs
         {
             using (FrmConfigurar f = new FrmConfigurar())
             {
+                timer1.Enabled = false;
                 f.ShowDialog();
                 if (f.blnOK)
                     CarregaConfig();
@@ -101,42 +122,42 @@ namespace MonitoramentoIPs
             clsFunctions.CursorEspera(this);
             clsFunctions.AguardaFormMostra("Verificando IPs");
 
-            for (int i = 0; i <= lstvIPs.Items.Count - 1; i++)
+            foreach (ListViewItem item in lstvIPs.Items)
             {
                 try
                 {
-                    strIP = lstvIPs.Items[i].Text;
+                    strIP = item.Text;
                     var status = pg.Send(strIP, 5000);
 
                     clsFunctions.AguardaFormMostra("Ping...." + strIP);
 
                     if (status.Status == IPStatus.Success)
                     {
-                        lstvIPs.Items[i].SubItems[1].Text = status.Status.ToString();
-                        lstvIPs.Items[i].BackColor = Color.LightGreen;
+                        item.SubItems[1].Text = status.Status.ToString();
+                        item.BackColor = Color.LightGreen;
                     }
                     else
                     {
-                        lstvIPs.Items[i].SubItems[1].Text = status.Status.ToString();
-                        lstvIPs.Items[i].BackColor = Color.Red;
+                        item.SubItems[1].Text = status.Status.ToString();
+                        item.BackColor = Color.Red;
+                        item.ForeColor = Color.White;
                         strEmail = "---------------" + DateTime.Now + "---------------" + Environment.NewLine + "[" + strIP + "] Erro: " + status.Status.ToString() + " " + status.Status;
 
-                        if (string.IsNullOrEmpty(TipoEnvio) || TipoEnvio == "1")
-                        {
-                            if (string.IsNullOrEmpty(lstvIPs.Items[i].SubItems[2].Text))
-                                clsFunctions.AguardaFormMostra("Enviando Email Erro");
-
-                            lstvIPs.Items[i].SubItems[2].Text = "EmailEnviado";
-                        }
-                        else
-                            clsFunctions.AguardaFormMostra("Enviando Email Erro");
+                        EnviaEmail(strEmail, TipoEnvio, item.SubItems[2].Text);
+                        EnviaTelegram(strEmail, item.SubItems[2].Text);
+                        item.SubItems[2].Text = "Enviado";
                     }
                 }
                 catch (PingException ex)
                 {
-                    lstvIPs.Items[i].SubItems[1].Text = ex.Message;
-                    lstvIPs.Items[i].BackColor = Color.Red;
+                    item.SubItems[1].Text = ex.Message;
+                    item.BackColor = Color.Red;
+                    item.ForeColor = Color.White;
                     strEmail = "---------------" + DateTime.Now + "---------------" + Environment.NewLine + "[" + strIP + "] Erro: " + ex.InnerException.Message;
+
+                    EnviaEmail(strEmail, TipoEnvio, item.SubItems[2].Text);
+                    EnviaTelegram(strEmail, item.SubItems[2].Text);
+                    item.SubItems[2].Text = "Enviado";
                 }
             }
 
@@ -151,5 +172,54 @@ namespace MonitoramentoIPs
         {
             ExecutarPing();
         }
+
+        private void EnviaEmail(string corpo, string TipoEnvio, string StatusEnvioIP)
+        {
+
+            if (TipoEnvio == "1") //Envia apenas uma vez
+            {
+                if (string.IsNullOrEmpty(StatusEnvioIP))
+                {
+                    clsFunctions.AguardaFormMostra("Enviando Email Erro");
+                    clsFunctions.EnviarEmail(corpo);
+                }
+            }
+            else if (TipoEnvio == "2") //Envia em cada ciclo de verificação mesmo se já estiver enviado
+            {
+                clsFunctions.AguardaFormMostra("Enviando Email Erro");
+                clsFunctions.EnviarEmail(corpo);
+            }
+
+        }
+
+        private void EnviaTelegram(string corpo, string StatusEnvioIP)
+        {
+            clsTelegram telegram = new clsTelegram();
+
+            if (TelegramEnvio)
+            {
+                if (TipoEnvio == "1") //Envia apenas uma vez
+                {
+                    if (string.IsNullOrEmpty(StatusEnvioIP))
+                    {
+                        clsFunctions.AguardaFormMostra("Enviando Telegram Erro");
+                        if (telegram.verificarAcessoInternet())
+                        {
+                            telegram.Bot_SendMessage(corpo);
+                        }
+                    }
+                }
+                else if (TipoEnvio == "2") //Envia em cada ciclo de verificação mesmo se já estiver enviado
+                {
+                    clsFunctions.AguardaFormMostra("Enviando Telegram Erro");
+                    if (telegram.verificarAcessoInternet())
+                    {
+                        telegram.Bot_SendMessage(corpo);
+                    }
+                }
+            }
+
+        }
+
     }
 }

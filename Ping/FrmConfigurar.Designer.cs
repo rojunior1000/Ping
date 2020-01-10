@@ -41,7 +41,7 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.txtnroIPs = new System.Windows.Forms.TextBox();
             this.tabEmail = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkEnvioTelegram = new System.Windows.Forms.CheckBox();
             this.chkMensagemAviso = new System.Windows.Forms.CheckBox();
             this.txtEmailPara = new System.Windows.Forms.TextBox();
             this.Label7 = new System.Windows.Forms.Label();
@@ -192,7 +192,7 @@
             // 
             this.tabEmail.BackColor = System.Drawing.SystemColors.Control;
             this.tabEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabEmail.Controls.Add(this.checkBox1);
+            this.tabEmail.Controls.Add(this.chkEnvioTelegram);
             this.tabEmail.Controls.Add(this.chkMensagemAviso);
             this.tabEmail.Controls.Add(this.txtEmailPara);
             this.tabEmail.Controls.Add(this.Label7);
@@ -214,108 +214,108 @@
             this.tabEmail.TabIndex = 1;
             this.tabEmail.Text = "Email";
             // 
-            // checkBox1
+            // chkEnvioTelegram
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(334, 211);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(132, 17);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Enviar Aviso Telegram";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkEnvioTelegram.AutoSize = true;
+            this.chkEnvioTelegram.Location = new System.Drawing.Point(134, 39);
+            this.chkEnvioTelegram.Name = "chkEnvioTelegram";
+            this.chkEnvioTelegram.Size = new System.Drawing.Size(132, 17);
+            this.chkEnvioTelegram.TabIndex = 2;
+            this.chkEnvioTelegram.Text = "Enviar Aviso Telegram";
+            this.chkEnvioTelegram.UseVisualStyleBackColor = true;
             // 
             // chkMensagemAviso
             // 
             this.chkMensagemAviso.AutoSize = true;
-            this.chkMensagemAviso.Location = new System.Drawing.Point(118, 211);
+            this.chkMensagemAviso.Location = new System.Drawing.Point(134, 228);
             this.chkMensagemAviso.Name = "chkMensagemAviso";
             this.chkMensagemAviso.Size = new System.Drawing.Size(210, 17);
-            this.chkMensagemAviso.TabIndex = 13;
+            this.chkMensagemAviso.TabIndex = 14;
             this.chkMensagemAviso.Text = "Mensagem de Aviso de E-mail Enviado";
             this.chkMensagemAviso.UseVisualStyleBackColor = true;
             // 
             // txtEmailPara
             // 
-            this.txtEmailPara.Location = new System.Drawing.Point(118, 164);
+            this.txtEmailPara.Location = new System.Drawing.Point(134, 202);
             this.txtEmailPara.Name = "txtEmailPara";
             this.txtEmailPara.Size = new System.Drawing.Size(529, 20);
-            this.txtEmailPara.TabIndex = 12;
+            this.txtEmailPara.TabIndex = 13;
             // 
             // Label7
             // 
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(118, 148);
+            this.Label7.Location = new System.Drawing.Point(134, 186);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(91, 13);
-            this.Label7.TabIndex = 11;
+            this.Label7.TabIndex = 12;
             this.Label7.Text = "Encaminhar Para:";
             // 
             // optErro1
             // 
             this.optErro1.AutoSize = true;
-            this.optErro1.Location = new System.Drawing.Point(275, 190);
+            this.optErro1.Location = new System.Drawing.Point(291, 16);
             this.optErro1.Name = "optErro1";
             this.optErro1.Size = new System.Drawing.Size(194, 17);
-            this.optErro1.TabIndex = 6;
-            this.optErro1.TabStop = true;
+            this.optErro1.TabIndex = 1;
             this.optErro1.Text = "Enviar em cada ciclo de verificação";
             this.optErro1.UseVisualStyleBackColor = true;
             // 
             // optErro
             // 
             this.optErro.AutoSize = true;
-            this.optErro.Location = new System.Drawing.Point(118, 190);
+            this.optErro.Checked = true;
+            this.optErro.Location = new System.Drawing.Point(134, 16);
             this.optErro.Name = "optErro";
             this.optErro.Size = new System.Drawing.Size(151, 17);
-            this.optErro.TabIndex = 5;
+            this.optErro.TabIndex = 0;
             this.optErro.TabStop = true;
             this.optErro.Text = "Enviar quando houver erro";
             this.optErro.UseVisualStyleBackColor = true;
             // 
             // txtporta
             // 
-            this.txtporta.Location = new System.Drawing.Point(493, 47);
+            this.txtporta.Location = new System.Drawing.Point(509, 85);
             this.txtporta.Mask = "000";
             this.txtporta.Name = "txtporta";
             this.txtporta.Size = new System.Drawing.Size(57, 20);
-            this.txtporta.TabIndex = 1;
+            this.txtporta.TabIndex = 6;
             this.txtporta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtsenhaEmail
             // 
-            this.txtsenhaEmail.Location = new System.Drawing.Point(118, 125);
+            this.txtsenhaEmail.Location = new System.Drawing.Point(134, 163);
             this.txtsenhaEmail.Name = "txtsenhaEmail";
             this.txtsenhaEmail.PasswordChar = '*';
             this.txtsenhaEmail.Size = new System.Drawing.Size(529, 20);
-            this.txtsenhaEmail.TabIndex = 4;
+            this.txtsenhaEmail.TabIndex = 11;
             // 
             // txtusuarioEmail
             // 
-            this.txtusuarioEmail.Location = new System.Drawing.Point(118, 86);
+            this.txtusuarioEmail.Location = new System.Drawing.Point(134, 124);
             this.txtusuarioEmail.Name = "txtusuarioEmail";
             this.txtusuarioEmail.Size = new System.Drawing.Size(529, 20);
-            this.txtusuarioEmail.TabIndex = 3;
+            this.txtusuarioEmail.TabIndex = 9;
             // 
             // txtsmtp
             // 
-            this.txtsmtp.Location = new System.Drawing.Point(118, 47);
+            this.txtsmtp.Location = new System.Drawing.Point(134, 85);
             this.txtsmtp.Name = "txtsmtp";
             this.txtsmtp.Size = new System.Drawing.Size(369, 20);
-            this.txtsmtp.TabIndex = 0;
+            this.txtsmtp.TabIndex = 4;
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(115, 109);
+            this.Label6.Location = new System.Drawing.Point(131, 147);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(38, 13);
-            this.Label6.TabIndex = 9;
+            this.Label6.TabIndex = 10;
             this.Label6.Text = "Senha";
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(118, 70);
+            this.Label5.Location = new System.Drawing.Point(134, 108);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(43, 13);
             this.Label5.TabIndex = 8;
@@ -324,28 +324,28 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(490, 31);
+            this.Label4.Location = new System.Drawing.Point(506, 69);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(32, 13);
-            this.Label4.TabIndex = 10;
+            this.Label4.TabIndex = 5;
             this.Label4.Text = "Porta";
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(115, 31);
+            this.Label3.Location = new System.Drawing.Point(131, 69);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(79, 13);
-            this.Label3.TabIndex = 7;
+            this.Label3.TabIndex = 3;
             this.Label3.Text = "Servidor SMTP";
             // 
             // smtpSSL
             // 
             this.smtpSSL.AutoSize = true;
-            this.smtpSSL.Location = new System.Drawing.Point(556, 49);
+            this.smtpSSL.Location = new System.Drawing.Point(572, 87);
             this.smtpSSL.Name = "smtpSSL";
             this.smtpSSL.Size = new System.Drawing.Size(91, 17);
-            this.smtpSSL.TabIndex = 2;
+            this.smtpSSL.TabIndex = 7;
             this.smtpSSL.Text = "Conexão SSL";
             this.smtpSSL.UseVisualStyleBackColor = true;
             // 
@@ -425,7 +425,7 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txtnroIPs;
         internal System.Windows.Forms.TabPage tabEmail;
-        internal System.Windows.Forms.CheckBox checkBox1;
+        internal System.Windows.Forms.CheckBox chkEnvioTelegram;
         internal System.Windows.Forms.CheckBox chkMensagemAviso;
         internal System.Windows.Forms.TextBox txtEmailPara;
         internal System.Windows.Forms.Label Label7;

@@ -33,6 +33,7 @@
             this.lstvIPs = new System.Windows.Forms.ListView();
             this.colIPs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEnviado = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnFechar = new System.Windows.Forms.Button();
@@ -41,21 +42,26 @@
             this.btnIniciar = new System.Windows.Forms.Button();
             this.lblproximo = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblConfiguracao = new System.Windows.Forms.Label();
+            this.lblConfiguracaoTexto = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstvIPs
             // 
+            this.lstvIPs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstvIPs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colIPs,
-            this.colStatus});
-            this.lstvIPs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colStatus,
+            this.colEnviado});
             this.lstvIPs.GridLines = true;
             this.lstvIPs.HideSelection = false;
-            this.lstvIPs.Location = new System.Drawing.Point(0, 0);
+            this.lstvIPs.Location = new System.Drawing.Point(0, 61);
             this.lstvIPs.Name = "lstvIPs";
-            this.lstvIPs.Size = new System.Drawing.Size(923, 459);
+            this.lstvIPs.Size = new System.Drawing.Size(923, 398);
             this.lstvIPs.TabIndex = 0;
             this.lstvIPs.UseCompatibleStateImageBehavior = false;
             this.lstvIPs.View = System.Windows.Forms.View.Details;
@@ -70,8 +76,15 @@
             this.colStatus.Text = "Status IPs";
             this.colStatus.Width = 297;
             // 
+            // colEnviado
+            // 
+            this.colEnviado.Text = "Status Envio";
+            this.colEnviado.Width = 259;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblConfiguracaoTexto);
+            this.panel1.Controls.Add(this.lblConfiguracao);
             this.panel1.Controls.Add(this.lstvIPs);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -158,6 +171,25 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblConfiguracao
+            // 
+            this.lblConfiguracao.AutoSize = true;
+            this.lblConfiguracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfiguracao.Location = new System.Drawing.Point(12, 9);
+            this.lblConfiguracao.Name = "lblConfiguracao";
+            this.lblConfiguracao.Size = new System.Drawing.Size(209, 16);
+            this.lblConfiguracao.TabIndex = 1;
+            this.lblConfiguracao.Text = "Configuração Parametrizada:";
+            // 
+            // lblConfiguracaoTexto
+            // 
+            this.lblConfiguracaoTexto.AutoSize = true;
+            this.lblConfiguracaoTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfiguracaoTexto.Location = new System.Drawing.Point(220, 9);
+            this.lblConfiguracaoTexto.Name = "lblConfiguracaoTexto";
+            this.lblConfiguracaoTexto.Size = new System.Drawing.Size(0, 16);
+            this.lblConfiguracaoTexto.TabIndex = 2;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +206,7 @@
             this.Text = "Monitoramento de IPs";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -193,6 +226,9 @@
         private System.Windows.Forms.Button btnPausar;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Label lblproximo;
+        private System.Windows.Forms.ColumnHeader colEnviado;
+        private System.Windows.Forms.Label lblConfiguracao;
+        private System.Windows.Forms.Label lblConfiguracaoTexto;
     }
 }
 

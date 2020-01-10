@@ -88,7 +88,7 @@ namespace MonitoramentoIPs
                     {
                         if (dtGetIni.Columns[i].ColumnName.Contains("IPs"))
                         {
-                            result.Add(dtGetIni.Rows[i][TagName].ToString());
+                            result.Add(dtGetIni.Rows[0][dtGetIni.Columns[i].ColumnName].ToString());
                         }
                     }
 
@@ -104,6 +104,12 @@ namespace MonitoramentoIPs
         public static string Recupera_Xml(string strParametros, string strTagPrincipal)
         {
             string result = GetIni(strParametros, ArquivoConfigXML, strTagPrincipal);
+            return result;
+        }
+
+        public static List<string> RecuperaList_Xml(string strParametros, string strTagPrincipal)
+        {
+            List<string> result = GetIniList(strParametros, ArquivoConfigXML, strTagPrincipal);
             return result;
         }
 
@@ -243,6 +249,7 @@ namespace MonitoramentoIPs
             if (f != null)
                 f.Close();
         }
+
 
     }
 }

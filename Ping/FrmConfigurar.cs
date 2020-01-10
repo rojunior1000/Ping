@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -25,19 +26,16 @@ namespace MonitoramentoIPs
 
         private void CarregaCampos()
         {
-            string strIPs = string.Empty;
+            List<string> strIPs = new List<string>();
 
             this.lstvDados.Items.Clear();
             this.lstvDados.BeginUpdate();
 
-            for (int i = 0; i < 999; i++)
+            strIPs = clsFunctions.RecuperaList_Xml("IPs", "ConfigPingIPs");
+            foreach (var item in strIPs)
             {
-                strIPs = clsFunctions.Recupera_Xml("IPs" + i, "ConfigPingIPs");
-                if (!string.IsNullOrEmpty(strIPs))
-                {
-                    ListViewItem lst = this.lstvDados.Items.Add(strIPs);
-                    lst.Tag = strIPs;
-                }
+                ListViewItem lst = this.lstvDados.Items.Add(item);
+                lst.Tag = item;
             }
 
             this.lstvDados.EndUpdate();
@@ -58,6 +56,7 @@ namespace MonitoramentoIPs
             optErro.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("Enviar1", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("Enviar1", "ConfigPingIPs"));
             optErro1.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("Enviar2", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("Enviar2", "ConfigPingIPs"));
             chkMensagemAviso.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("MsgAviso", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("MsgAviso", "ConfigPingIPs"));
+            chkEnvioTelegram.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs"));
         }
 
         private void btnAdiciona_Click(object sender, EventArgs e)
@@ -198,6 +197,9 @@ namespace MonitoramentoIPs
             }
 
             clsFunctions.Salva_Xml(txtTempo.Text, "TempoPing", "ConfigPingIPs");
+            clsFunctions.Salva_Xml(optErro.Checked.ToString(), "Enviar1", "ConfigPingIPs");
+            clsFunctions.Salva_Xml(optErro1.Checked.ToString(), "Enviar2", "ConfigPingIPs");
+            clsFunctions.Salva_Xml(chkEnvioTelegram.Checked.ToString(), "EnvioTelegram", "ConfigPingIPs");
 
             if (!string.IsNullOrEmpty(txtsmtp.Text))
             {
@@ -207,8 +209,6 @@ namespace MonitoramentoIPs
                 clsFunctions.Salva_Xml(txtusuarioEmail.Text, "Usuario", "ConfigPingIPs");
                 clsFunctions.Salva_Xml(txtsenhaEmail.Text, "Senha", "ConfigPingIPs");
                 clsFunctions.Salva_Xml(txtEmailPara.Text, "EmailPara", "ConfigPingIPs");
-                clsFunctions.Salva_Xml(optErro.Checked.ToString(), "Enviar1", "ConfigPingIPs");
-                clsFunctions.Salva_Xml(optErro1.Checked.ToString(), "Enviar2", "ConfigPingIPs");
                 clsFunctions.Salva_Xml(chkMensagemAviso.Checked.ToString(), "MsgAviso", "ConfigPingIPs");
             }
 
