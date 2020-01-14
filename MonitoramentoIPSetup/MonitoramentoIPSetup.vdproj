@@ -104,6 +104,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -335,16 +343,16 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MonitoramentoIPs"
-        "ProductCode" = "8:{0F8E1BC7-1690-4538-AB04-A61D0E08C5CA}"
-        "PackageCode" = "8:{43457415-547D-45F4-993E-A91B2E9A8780}"
+        "ProductCode" = "8:{A0D0F4BC-B9C2-4031-AC57-78702EEB93D4}"
+        "PackageCode" = "8:{3D5D476D-788A-47FE-9E22-FC5192A6531C}"
         "UpgradeCode" = "8:{02B78FE8-F82F-4CBF-ABF2-1C03A85525B3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
-        "Manufacturer" = "8:Contrucao"
+        "ProductVersion" = "8:1.0.3"
+        "Manufacturer" = "8:Centermega"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup MonitoramentoIPs"

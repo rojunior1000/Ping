@@ -32,7 +32,12 @@ namespace MonitoramentoIPs
             lblConfiguracaoTexto.Text = "Sem Parametrização";
 
             if (!File.Exists(clsFunctions.ArquivoConfigXML))
+            {
+                if (!Directory.Exists("@C:\tmp"))
+                    Directory.CreateDirectory("C:/tmp/");
+
                 return;
+            }
 
             List<string> strIPs = new List<string>();
 

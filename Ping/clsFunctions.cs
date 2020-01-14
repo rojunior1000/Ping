@@ -12,7 +12,7 @@ namespace MonitoramentoIPs
     public class clsFunctions
     {
 
-        public static string ArquivoConfigXML = "ConfigIPs.xml";
+        public static string ArquivoConfigXML = @"C:\tmp\ConfigIPs.xml";
 
         #region "Insere valor no arquivo xml"
         public static void SetIni(string NameTag, string ValueTag, string FileXML, string TagMain)

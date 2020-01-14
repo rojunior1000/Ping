@@ -57,6 +57,9 @@ namespace MonitoramentoIPs
             optErro1.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("Enviar2", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("Enviar2", "ConfigPingIPs"));
             chkMensagemAviso.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("MsgAviso", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("MsgAviso", "ConfigPingIPs"));
             chkEnvioTelegram.Checked = string.IsNullOrEmpty(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs")) ? false : Convert.ToBoolean(clsFunctions.Recupera_Xml("EnvioTelegram", "ConfigPingIPs"));
+
+            if (optErro.Checked == false && optErro1.Checked == false)
+                optErro.Checked = true;
         }
 
         private void btnAdiciona_Click(object sender, EventArgs e)
