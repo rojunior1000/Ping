@@ -14,6 +14,7 @@ namespace MonitoramentoIPs
         {
             this.pictureBox.Refresh();
             Application.DoEvents();
+            this.pictureBox.Refresh();
         }
 
         private void FrmAguarda_Load(object sender, EventArgs e)
